@@ -5,7 +5,6 @@ from gi.repository import GObject
 
 import signal
 
-#BUGGY BUGGY BUGGY BUGGY
 video_path = "/home/cfoch/Videos/samples/big_buck_bunny_1080p_stereo.ogg"
 
 def handle_sigint(sig, frame):
@@ -38,7 +37,8 @@ if __name__ == "__main__":
         video_bin_description="videobalance saturation=1.5 hue=+0.5",
         audio_bin_description="audiopanorama panorama=1.0")
 
-    clip_effect.set_start(9)
+    #The effect starts after 3 seconds
+    clip_effect.set_start(Gst.SECOND * 3) 
     clip_effect.set_inpoint(0)
     clip_effect.set_duration(asset_video.get_duration())
     clip_video.set_priority(0)
